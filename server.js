@@ -2,17 +2,21 @@
 const mongoConnection = require("./config");
 const express = require("express");
 
+const userRoute = require("./routes/userRoute");
+
 const Fruit = require("./schemas/fruit");
 
 const bodyParser = require("body-parser");
 //CONFIGURE DOTENV
 const dotenv = require("dotenv");
+const helmet = require("helmet");
 dotenv.config();
 const port = 3000 || process.env.PORT;
 const app = express();
 
+app.use(helmet());
 app.use(bodyParser.json());
-
+app.use("/users", userRoute);
 app.get("/", (req, res) => {
   res.status(200).json({ message: "API UP!" });
 });
