@@ -9,12 +9,6 @@ const fruitSchema = new mongoose.Schema({
   poisonous: Boolean,
 });
 
-const userSchema = new mongoose.Schema({
-  username: { type: String, required: true },
-  email: { type: String, required: true },
-  password: { type: String, required: true },
-});
-
 const fruit = mongoose.model("Fruit", fruitSchema);
 
 module.exports = fruit;
